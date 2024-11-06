@@ -13,6 +13,9 @@ const KeeKohWebsite = () => {
 
   const releases = [
     "IT ALL FALLS // 2024",
+    "IT ALL FALLS // 2024",
+    "IT ALL FALLS // 2024",
+    "IT ALL FALLS // 2024",
   ];
 
   const platforms = [
