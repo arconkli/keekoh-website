@@ -12,10 +12,7 @@ const KeeKohWebsite = () => {
   };
 
   const releases = [
-    "NEON DREAMS // 2024",
-    "MIDNIGHT WALK // 2024",
-    "CITY LIGHTS // 2023",
-    "AFTER HOURS // 2023"
+    "IT ALL FALLS // 2024",
   ];
 
   const platforms = [
