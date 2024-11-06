@@ -71,7 +71,7 @@ const KeeKohWebsite = () => {
       <div className="relative h-full flex flex-col">
         {/* Header */}
         <nav className="w-full p-4 flex justify-start items-center z-20 bg-gradient-to-b from-black/50 to-transparent">
-          <h1 className="text-lg md:text-xl font-light tracking-widest" style={titleStyle}>KEEKOH</h1>
+          <h1 className="text-lg md:text-xl font-light tracking-widest" style={titleStyle}></h1>
         </nav>
 
         {/* Center content */}
