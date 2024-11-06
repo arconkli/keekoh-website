@@ -32,80 +32,58 @@ const KeeKohWebsite = () => {
 
   return (
     <div 
-      className="h-screen bg-black text-white overflow-hidden"
+      className="fixed inset-0 bg-black text-white overflow-hidden"
       onMouseMove={handleMouseMove}
     >
-      {/* Enhanced ambient background effects */}
-      <div className="fixed inset-0">
-        {/* Primary gradient - with reduced movement */}
-        <div className="absolute inset-0 bg-gradient-to-t from-orange-900/20 via-black to-black" 
-          style={{
-            transform: `translate(${mousePosition.x * 5}px, ${mousePosition.y * 5}px)`,
-            transition: 'transform 0.8s cubic-bezier(0.23, 1, 0.32, 1)'
-          }}
-        />
+      {/* Background effects */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-t from-orange-900/20 via-black to-black" />
         
-        {/* Interactive glow orbs with reduced movement */}
+        {/* Glow orbs - static position */}
         <div 
-          className="absolute w-[300px] md:w-[600px] h-[300px] md:h-[600px] rounded-full blur-[100px] opacity-30"
+          className="absolute w-[200px] md:w-[400px] h-[200px] md:h-[400px] rounded-full blur-[100px] opacity-30"
           style={{
             background: 'radial-gradient(circle, rgba(255,140,50,0.4) 0%, rgba(255,140,50,0.1) 70%, transparent 100%)',
-            left: `${50 + mousePosition.x * 10}%`,
-            top: `${50 + mousePosition.y * 10}%`,
-            transform: 'translate(-50%, -50%)',
-            transition: 'all 0.8s cubic-bezier(0.23, 1, 0.32, 1)'
+            left: '50%',
+            top: '50%',
+            transform: 'translate(-50%, -50%)'
           }}
         />
         
-        {/* Secondary glow orb with reduced movement */}
         <div 
-          className="absolute w-[200px] md:w-[400px] h-[200px] md:h-[400px] rounded-full blur-[80px] opacity-10"
+          className="absolute w-[150px] md:w-[300px] h-[150px] md:h-[300px] rounded-full blur-[80px] opacity-10"
           style={{
             background: 'radial-gradient(circle, rgba(255,140,50,0.3) 0%, rgba(255,140,50,0.05) 70%, transparent 100%)',
-            left: `${50 - mousePosition.x * 8}%`,
-            top: `${50 - mousePosition.y * 8}%`,
-            transform: 'translate(-50%, -50%)',
-            transition: 'all 0.8s cubic-bezier(0.23, 1, 0.32, 1)'
+            left: '50%',
+            top: '50%',
+            transform: 'translate(-50%, -50%)'
           }}
         />
       </div>
       
-      <div className="relative h-screen">
-        <nav className="absolute top-0 w-full p-4 md:p-6 flex justify-between items-center z-20 bg-gradient-to-b from-black/50 to-transparent">
+      {/* Main content */}
+      <div className="relative h-full flex flex-col">
+        {/* Header */}
+        <nav className="w-full p-4 flex justify-between items-center z-20 bg-gradient-to-b from-black/50 to-transparent">
           <h1 className="text-lg md:text-xl font-light tracking-widest" style={titleStyle}>KEEKOH</h1>
           <Music className="w-5 h-5 hover:text-orange-400 transition-colors cursor-pointer" />
         </nav>
 
-        <div className="h-screen flex items-center justify-center px-4">
-          <div className="text-center space-y-8">
-            {/* Enhanced neon text effect */}
-            <h2 className="relative text-6xl md:text-8xl" style={titleStyle}>
+        {/* Center content */}
+        <div className="flex-1 flex items-center justify-center px-4">
+          <div className="text-center space-y-6">
+            {/* Main title */}
+            <h2 className="relative text-5xl md:text-7xl" style={titleStyle}>
               <span className="relative block">
-                {/* Base text */}
-                <span className="relative z-10 text-white">
-                  KEEKOH
-                </span>
-                
-                {/* Enhanced neon glow layers */}
-                <span className="absolute inset-0 blur-[1px] text-white opacity-90">
-                  KEEKOH
-                </span>
-                <span className="absolute inset-0 blur-[2px] text-white opacity-80">
-                  KEEKOH
-                </span>
-                <span className="absolute inset-0 blur-[4px] text-white opacity-60">
-                  KEEKOH
-                </span>
-                <span className="absolute inset-0 blur-[8px] text-white opacity-40">
-                  KEEKOH
-                </span>
-                <span className="absolute inset-0 blur-[16px] text-white opacity-20">
-                  KEEKOH
-                </span>
+                <span className="relative z-10 text-white">KEEKOH</span>
+                <span className="absolute inset-0 blur-[2px] text-white opacity-80">KEEKOH</span>
+                <span className="absolute inset-0 blur-[4px] text-white opacity-60">KEEKOH</span>
+                <span className="absolute inset-0 blur-[8px] text-white opacity-40">KEEKOH</span>
               </span>
             </h2>
             
-            <div className="flex flex-wrap justify-center gap-4 md:gap-6 text-xs md:text-sm font-light tracking-wider">
+            {/* Platforms */}
+            <div className="flex flex-wrap justify-center gap-4 text-xs md:text-sm font-light tracking-wider">
               {platforms.map((platform) => (
                 <a
                   key={platform.name}
@@ -120,7 +98,23 @@ const KeeKohWebsite = () => {
           </div>
         </div>
 
-        <footer className="absolute bottom-0 w-full p-4 md:p-6 flex justify-between items-center z-20 bg-gradient-to-t from-black/50 to-transparent">
+        {/* Releases ticker */}
+        <div className="w-full overflow-hidden border-t border-b border-white/10 py-3 z-10 backdrop-blur-sm bg-black/30">
+          <div className="inline-flex whitespace-nowrap animate-ticker">
+            {[...releases, ...releases, ...releases].map((release, index) => (
+              <span
+                key={index}
+                className="inline-block mx-6 text-xs md:text-sm font-light tracking-widest text-white/70"
+                style={titleStyle}
+              >
+                {release}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Footer */}
+        <footer className="w-full p-4 flex justify-between items-center z-20 bg-gradient-to-t from-black/50 to-transparent">
           <p className="text-xs text-white/50" style={titleStyle}>© 2024</p>
           <div className="flex gap-4">
             <Instagram className="w-4 h-4 hover:text-orange-400 transition-colors cursor-pointer" />
@@ -129,22 +123,9 @@ const KeeKohWebsite = () => {
         </footer>
       </div>
 
-      <div className="fixed bottom-16 w-full overflow-hidden border-t border-b border-white/10 py-4 z-10 backdrop-blur-sm bg-black/30">
-        <div className="inline-flex whitespace-nowrap animate-ticker">
-          {[...releases, ...releases, ...releases].map((release, index) => (
-            <span
-              key={index}
-              className="inline-block mx-8 text-xs md:text-sm font-light tracking-widest text-white/70 hover:text-orange-400 transition-colors duration-300"
-              style={titleStyle}
-            >
-              {release}
-            </span>
-          ))}
-        </div>
-      </div>
-
+      {/* Noise overlay */}
       <div 
-        className="fixed inset-0 w-full h-full mix-blend-soft-light pointer-events-none z-50"
+        className="absolute inset-0 w-full h-full mix-blend-soft-light pointer-events-none z-50"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
           opacity: 0.08
@@ -160,6 +141,13 @@ const KeeKohWebsite = () => {
         .animate-ticker {
           animation: ticker 20s linear infinite;
           will-change: transform;
+        }
+
+        html, body {
+          overflow: hidden;
+          position: fixed;
+          width: 100%;
+          height: 100%;
         }
       `}</style>
     </div>
