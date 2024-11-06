@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Instagram, Youtube } from 'lucide-react';
 
+
 const KeeKohWebsite = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   
@@ -27,7 +28,7 @@ const KeeKohWebsite = () => {
     fontStyle: "normal"
   };
 
-  const keekohStyle = {
+  const keekohStyle = { 
     fontFamily: "neulis-cursive, sans-serif",
     fontWeight: 500,
     fontStyle: "normal"
@@ -36,6 +37,7 @@ const KeeKohWebsite = () => {
   const tickerItems = Array(20).fill(releases).flat();
 
   return (
+    <link rel="stylesheet" href="https://use.typekit.net/roj5xwq.css">
     <div 
       className="fixed inset-0 bg-black text-white overflow-hidden"
       onMouseMove={handleMouseMove}
