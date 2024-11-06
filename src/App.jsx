@@ -1,29 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { Music, Instagram, Twitter } from 'lucide-react';
+import React, { useState } from 'react';
+import { Music, Instagram, Youtube } from 'lucide-react';
 
 const KeeKohWebsite = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [scrollY, setScrollY] = useState(0);
   
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    
-    const handleMouseMove = (e) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth) * 2 - 1,
-        y: (e.clientY / window.innerHeight) * 2 - 1
-      });
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
+  const handleMouseMove = (e) => {
+    setMousePosition({
+      x: (e.clientX / window.innerWidth) * 2 - 1,
+      y: (e.clientY / window.innerHeight) * 2 - 1
+    });
+  };
 
   const releases = [
     "NEON DREAMS // 2024",
@@ -35,8 +21,7 @@ const KeeKohWebsite = () => {
   const platforms = [
     { name: "SPOTIFY", url: "#" },
     { name: "APPLE MUSIC", url: "#" },
-    { name: "SOUNDCLOUD", url: "#" },
-    { name: "BANDCAMP", url: "#" }
+    { name: "TIDAL", url: "#" }
   ];
 
   const titleStyle = {
@@ -46,7 +31,10 @@ const KeeKohWebsite = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-hidden">
+    <div 
+      className="h-screen bg-black text-white overflow-hidden"
+      onMouseMove={handleMouseMove}
+    >
       {/* Enhanced ambient background effects */}
       <div className="fixed inset-0">
         {/* Primary gradient - with reduced movement */}
@@ -59,7 +47,7 @@ const KeeKohWebsite = () => {
         
         {/* Interactive glow orbs with reduced movement */}
         <div 
-          className="absolute w-[600px] h-[600px] rounded-full blur-[100px] opacity-30"
+          className="absolute w-[300px] md:w-[600px] h-[300px] md:h-[600px] rounded-full blur-[100px] opacity-30"
           style={{
             background: 'radial-gradient(circle, rgba(255,140,50,0.4) 0%, rgba(255,140,50,0.1) 70%, transparent 100%)',
             left: `${50 + mousePosition.x * 10}%`,
@@ -71,7 +59,7 @@ const KeeKohWebsite = () => {
         
         {/* Secondary glow orb with reduced movement */}
         <div 
-          className="absolute w-[400px] h-[400px] rounded-full blur-[80px] opacity-10"
+          className="absolute w-[200px] md:w-[400px] h-[200px] md:h-[400px] rounded-full blur-[80px] opacity-10"
           style={{
             background: 'radial-gradient(circle, rgba(255,140,50,0.3) 0%, rgba(255,140,50,0.05) 70%, transparent 100%)',
             left: `${50 - mousePosition.x * 8}%`,
@@ -82,16 +70,16 @@ const KeeKohWebsite = () => {
         />
       </div>
       
-      <div className="relative min-h-screen">
-        <nav className="fixed top-0 w-full p-6 flex justify-between items-center z-20 bg-gradient-to-b from-black/50 to-transparent">
-          <h1 className="text-xl font-light tracking-widest" style={titleStyle}>KEEKOH</h1>
+      <div className="relative h-screen">
+        <nav className="absolute top-0 w-full p-4 md:p-6 flex justify-between items-center z-20 bg-gradient-to-b from-black/50 to-transparent">
+          <h1 className="text-lg md:text-xl font-light tracking-widest" style={titleStyle}>KEEKOH</h1>
           <Music className="w-5 h-5 hover:text-orange-400 transition-colors cursor-pointer" />
         </nav>
 
-        <div className="min-h-screen flex items-center justify-center px-4">
+        <div className="h-screen flex items-center justify-center px-4">
           <div className="text-center space-y-8">
             {/* Enhanced neon text effect */}
-            <h2 className="relative text-8xl" style={titleStyle}>
+            <h2 className="relative text-6xl md:text-8xl" style={titleStyle}>
               <span className="relative block">
                 {/* Base text */}
                 <span className="relative z-10 text-white">
@@ -114,13 +102,10 @@ const KeeKohWebsite = () => {
                 <span className="absolute inset-0 blur-[16px] text-white opacity-20">
                   KEEKOH
                 </span>
-                <span className="absolute inset-0 blur-[32px] text-white opacity-10">
-                  KEEKOH
-                </span>
               </span>
             </h2>
             
-            <div className="flex flex-wrap justify-center gap-6 text-sm font-light tracking-wider">
+            <div className="flex flex-wrap justify-center gap-4 md:gap-6 text-xs md:text-sm font-light tracking-wider">
               {platforms.map((platform) => (
                 <a
                   key={platform.name}
@@ -135,11 +120,11 @@ const KeeKohWebsite = () => {
           </div>
         </div>
 
-        <footer className="fixed bottom-0 w-full p-6 flex justify-between items-center z-20 bg-gradient-to-t from-black/50 to-transparent">
+        <footer className="absolute bottom-0 w-full p-4 md:p-6 flex justify-between items-center z-20 bg-gradient-to-t from-black/50 to-transparent">
           <p className="text-xs text-white/50" style={titleStyle}>© 2024</p>
           <div className="flex gap-4">
             <Instagram className="w-4 h-4 hover:text-orange-400 transition-colors cursor-pointer" />
-            <Twitter className="w-4 h-4 hover:text-orange-400 transition-colors cursor-pointer" />
+            <Youtube className="w-4 h-4 hover:text-orange-400 transition-colors cursor-pointer" />
           </div>
         </footer>
       </div>
@@ -149,7 +134,7 @@ const KeeKohWebsite = () => {
           {[...releases, ...releases, ...releases].map((release, index) => (
             <span
               key={index}
-              className="inline-block mx-8 text-sm font-light tracking-widest text-white/70 hover:text-orange-400 transition-colors duration-300"
+              className="inline-block mx-8 text-xs md:text-sm font-light tracking-widest text-white/70 hover:text-orange-400 transition-colors duration-300"
               style={titleStyle}
             >
               {release}
@@ -162,7 +147,6 @@ const KeeKohWebsite = () => {
         className="fixed inset-0 w-full h-full mix-blend-soft-light pointer-events-none z-50"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
-          transform: `translate(${Math.sin(scrollY * 0.001) * 3}px, ${Math.cos(scrollY * 0.001) * 3}px)`,
           opacity: 0.08
         }}
       />
