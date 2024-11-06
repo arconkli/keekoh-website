@@ -37,7 +37,6 @@ const KeeKohWebsite = () => {
   const tickerItems = Array(20).fill(releases).flat();
 
   return (
-    <link rel="stylesheet" href="https://use.typekit.net/roj5xwq.css">
     <div 
       className="fixed inset-0 bg-black text-white overflow-hidden"
       onMouseMove={handleMouseMove}
