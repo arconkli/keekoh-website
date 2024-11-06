@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Music, Instagram, Youtube } from 'lucide-react';
+import { Instagram, Youtube } from 'lucide-react';
 
 const KeeKohWebsite = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -12,10 +12,7 @@ const KeeKohWebsite = () => {
   };
 
   const releases = [
-    "IT ALL FALLS // 2024",
-    "IT ALL FALLS // 2024",
-    "IT ALL FALLS // 2024",
-    "IT ALL FALLS // 2024",
+    "IT ALL FALLS // 2024"
   ];
 
   const platforms = [
@@ -29,6 +26,14 @@ const KeeKohWebsite = () => {
     fontWeight: 700,
     fontStyle: "normal"
   };
+
+  const keekohStyle = {
+    fontFamily: "neulis-cursive, sans-serif",
+    fontWeight: 500,
+    fontStyle: "normal"
+  };
+
+  const tickerItems = Array(20).fill(releases).flat();
 
   return (
     <div 
@@ -64,16 +69,15 @@ const KeeKohWebsite = () => {
       {/* Main content */}
       <div className="relative h-full flex flex-col">
         {/* Header */}
-        <nav className="w-full p-4 flex justify-between items-center z-20 bg-gradient-to-b from-black/50 to-transparent">
+        <nav className="w-full p-4 flex justify-start items-center z-20 bg-gradient-to-b from-black/50 to-transparent">
           <h1 className="text-lg md:text-xl font-light tracking-widest" style={titleStyle}>KEEKOH</h1>
-          <Music className="w-5 h-5 hover:text-orange-400 transition-colors cursor-pointer" />
         </nav>
 
         {/* Center content */}
         <div className="flex-1 flex items-center justify-center px-4">
           <div className="text-center space-y-6">
             {/* Main title */}
-            <h2 className="relative text-5xl md:text-7xl" style={titleStyle}>
+            <h2 className="relative text-5xl md:text-7xl" style={keekohStyle}>
               <span className="relative block">
                 <span className="relative z-10 text-white">KEEKOH</span>
                 <span className="absolute inset-0 blur-[2px] text-white opacity-80">KEEKOH</span>
@@ -82,26 +86,40 @@ const KeeKohWebsite = () => {
               </span>
             </h2>
             
-            {/* Platforms */}
+            {/* Platforms with enhanced warm orange neon effect */}
             <div className="flex flex-wrap justify-center gap-4 text-xs md:text-sm font-light tracking-wider">
               {platforms.map((platform) => (
                 <a
                   key={platform.name}
                   href={platform.url}
-                  className="text-white/80 hover:text-orange-400 transition-colors duration-300"
+                  className="relative group"
                   style={titleStyle}
                 >
-                  {platform.name}
+                  <span className="relative z-10 text-white/80 group-hover:text-orange-300 transition-colors duration-300">
+                    {platform.name}
+                  </span>
+                  <span className="absolute inset-0 blur-[2px] text-orange-300/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    {platform.name}
+                  </span>
+                  <span className="absolute inset-0 blur-[4px] text-orange-400/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    {platform.name}
+                  </span>
+                  <span className="absolute inset-0 blur-[8px] text-orange-500/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    {platform.name}
+                  </span>
+                  <span className="absolute inset-0 blur-[16px] text-orange-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    {platform.name}
+                  </span>
                 </a>
               ))}
             </div>
           </div>
         </div>
 
-        {/* Releases ticker */}
+        {/* Infinite ticker */}
         <div className="w-full overflow-hidden border-t border-b border-white/10 py-3 z-10 backdrop-blur-sm bg-black/30">
           <div className="inline-flex whitespace-nowrap animate-ticker">
-            {[...releases, ...releases, ...releases].map((release, index) => (
+            {tickerItems.map((release, index) => (
               <span
                 key={index}
                 className="inline-block mx-6 text-xs md:text-sm font-light tracking-widest text-white/70"
@@ -135,11 +153,11 @@ const KeeKohWebsite = () => {
       <style>{`
         @keyframes ticker {
           0% { transform: translateX(0); }
-          100% { transform: translateX(-33.33%); }
+          100% { transform: translateX(-50%); }
         }
         
         .animate-ticker {
-          animation: ticker 20s linear infinite;
+          animation: ticker 30s linear infinite;
           will-change: transform;
         }
 
