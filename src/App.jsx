@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Instagram, Youtube } from 'lucide-react';
 
-
 const KeeKohWebsite = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   
@@ -28,7 +27,7 @@ const KeeKohWebsite = () => {
     fontStyle: "normal"
   };
 
-  const keekohStyle = { 
+  const keekohStyle = {
     fontFamily: "neulis-cursive, sans-serif",
     fontWeight: 500,
     fontStyle: "normal"
@@ -43,13 +42,13 @@ const KeeKohWebsite = () => {
     >
       {/* Background effects */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-t from-orange-900/20 via-black to-black" />
+        <div className="absolute inset-0 bg-gradient-to-t from-orange-900/30 via-black to-black" />
         
         {/* Glow orbs - static position */}
         <div 
-          className="absolute w-[200px] md:w-[400px] h-[200px] md:h-[400px] rounded-full blur-[100px] opacity-30"
+          className="absolute w-[200px] md:w-[400px] h-[200px] md:h-[400px] rounded-full blur-[100px] opacity-40"
           style={{
-            background: 'radial-gradient(circle, rgba(255,140,50,0.4) 0%, rgba(255,140,50,0.1) 70%, transparent 100%)',
+            background: 'radial-gradient(circle, rgba(255,140,50,0.5) 0%, rgba(255,140,50,0.15) 70%, transparent 100%)',
             left: '50%',
             top: '50%',
             transform: 'translate(-50%, -50%)'
@@ -57,9 +56,9 @@ const KeeKohWebsite = () => {
         />
         
         <div 
-          className="absolute w-[150px] md:w-[300px] h-[150px] md:h-[300px] rounded-full blur-[80px] opacity-10"
+          className="absolute w-[150px] md:w-[300px] h-[150px] md:h-[300px] rounded-full blur-[80px] opacity-15"
           style={{
-            background: 'radial-gradient(circle, rgba(255,140,50,0.3) 0%, rgba(255,140,50,0.05) 70%, transparent 100%)',
+            background: 'radial-gradient(circle, rgba(255,140,50,0.4) 0%, rgba(255,140,50,0.1) 70%, transparent 100%)',
             left: '50%',
             top: '50%',
             transform: 'translate(-50%, -50%)'
@@ -71,7 +70,7 @@ const KeeKohWebsite = () => {
       <div className="relative h-full flex flex-col">
         {/* Header */}
         <nav className="w-full p-4 flex justify-start items-center z-20 bg-gradient-to-b from-black/50 to-transparent">
-          <h1 className="text-lg md:text-xl font-light tracking-widest" style={titleStyle}></h1>
+          <h1 className="text-lg md:text-xl font-light tracking-widest" style={titleStyle}>KEEKOH</h1>
         </nav>
 
         {/* Center content */}
@@ -135,9 +134,9 @@ const KeeKohWebsite = () => {
         {/* Footer */}
         <footer className="w-full p-4 flex justify-between items-center z-20 bg-gradient-to-t from-black/50 to-transparent">
           <p className="text-xs text-white/50" style={titleStyle}>© 2024</p>
-          <div className="flex gap-4">
-            <Instagram className="w-4 h-4 hover:text-orange-400 transition-colors cursor-pointer" />
-            <Youtube className="w-4 h-4 hover:text-orange-400 transition-colors cursor-pointer" />
+          <div className="flex gap-4 items-center">
+            <Instagram className="w-5 h-5 hover:text-orange-400 transition-colors cursor-pointer" />
+            <Youtube className="w-8 h-8 hover:text-orange-400 transition-colors cursor-pointer" strokeWidth={1.5} />
           </div>
         </footer>
       </div>
