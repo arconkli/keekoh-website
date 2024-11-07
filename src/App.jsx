@@ -136,7 +136,7 @@ const KeeKohWebsite = () => {
           <p className="text-xs text-white/50" style={titleStyle}>© 2024</p>
           <div className="flex gap-4 items-center">
             <Instagram className="w-5 h-5 hover:text-orange-400 transition-colors cursor-pointer" />
-            <Youtube className="w-8 h-8 hover:text-orange-400 transition-colors cursor-pointer" strokeWidth={1.5} />
+            <Youtube className="w-7 h-7 hover:text-orange-400 transition-colors cursor-pointer" strokeWidth={1.5} />
           </div>
         </footer>
       </div>
