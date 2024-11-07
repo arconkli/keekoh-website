@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Instagram, Youtube } from 'lucide-react';
 
 const KeeKohWebsite = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const tickerRef = useRef(null);
   
   const handleMouseMove = (e) => {
     setMousePosition({
@@ -10,6 +11,48 @@ const KeeKohWebsite = () => {
       y: (e.clientY / window.innerHeight) * 2 - 1
     });
   };
+
+  useEffect(() => {
+    const ticker = tickerRef.current;
+    if (!ticker) return;
+
+    // Clone the ticker content as needed
+    const tickerContent = ticker.querySelector('.ticker-content');
+    const contentWidth = tickerContent.offsetWidth;
+    const parent = ticker.querySelector('.ticker-wrapper');
+    
+    // Calculate how many duplicates we need to fill the screen twice
+    const duplicatesNeeded = Math.ceil((parent.offsetWidth * 2) / contentWidth);
+    
+    // Remove any existing clones
+    const existingClones = ticker.querySelectorAll('.ticker-clone');
+    existingClones.forEach(clone => clone.remove());
+    
+    // Add new clones
+    for (let i = 0; i < duplicatesNeeded; i++) {
+      const clone = tickerContent.cloneNode(true);
+      clone.classList.add('ticker-clone');
+      parent.appendChild(clone);
+    }
+    
+    // Update animation duration based on content width
+    const style = document.createElement('style');
+    const duration = contentWidth / 50; // Adjust speed here
+    style.textContent = `
+      @keyframes ticker {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-${contentWidth}px); }
+      }
+      .ticker-wrapper {
+        animation: ticker ${duration}s linear infinite;
+      }
+    `;
+    document.head.appendChild(style);
+
+    return () => {
+      style.remove();
+    };
+  }, []);
 
   const releases = [
     "IT ALL FALLS // 2024"
@@ -33,7 +76,8 @@ const KeeKohWebsite = () => {
     fontStyle: "normal"
   };
 
-  const tickerItems = Array(20).fill(releases).flat();
+  // Create enough items for one complete set
+  const tickerItems = Array(10).fill(releases).flat();
 
   return (
     <div 
@@ -70,7 +114,7 @@ const KeeKohWebsite = () => {
       <div className="relative h-full flex flex-col">
         {/* Header */}
         <nav className="w-full p-4 flex justify-start items-center z-20 bg-gradient-to-b from-black/50 to-transparent">
-          <h1 className="text-lg md:text-xl font-light tracking-widest" style={titleStyle}>KEEKOH</h1>
+          <h1 className="text-lg md:text-xl font-light tracking-widest" style={titleStyle}></h1>
         </nav>
 
         {/* Center content */}
@@ -117,17 +161,19 @@ const KeeKohWebsite = () => {
         </div>
 
         {/* Infinite ticker */}
-        <div className="w-full overflow-hidden border-t border-b border-white/10 py-3 z-10 backdrop-blur-sm bg-black/30">
-          <div className="inline-flex whitespace-nowrap animate-ticker">
-            {tickerItems.map((release, index) => (
-              <span
-                key={index}
-                className="inline-block mx-6 text-xs md:text-sm font-light tracking-widest text-white/70"
-                style={titleStyle}
-              >
-                {release}
-              </span>
-            ))}
+        <div className="w-full overflow-hidden border-t border-b border-white/10 py-3 z-10 backdrop-blur-sm bg-black/30" ref={tickerRef}>
+          <div className="ticker-wrapper inline-flex">
+            <div className="ticker-content inline-flex whitespace-nowrap">
+              {tickerItems.map((release, index) => (
+                <span
+                  key={index}
+                  className="inline-block mx-6 text-xs md:text-sm font-light tracking-widest text-white/70"
+                  style={titleStyle}
+                >
+                  {release}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -151,13 +197,7 @@ const KeeKohWebsite = () => {
       />
 
       <style>{`
-        @keyframes ticker {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        
-        .animate-ticker {
-          animation: ticker 30s linear infinite;
+        .ticker-wrapper {
           will-change: transform;
         }
 
