@@ -181,8 +181,22 @@ const KeeKohWebsite = () => {
         <footer className="w-full p-4 flex justify-between items-center z-20 bg-gradient-to-t from-black/50 to-transparent">
           <p className="text-xs text-white/50" style={titleStyle}>© 2024</p>
           <div className="flex gap-4 items-center">
-            <Instagram className="w-5 h-5 hover:text-orange-400 transition-colors cursor-pointer" />
-            <Youtube className="w-7 h-7 hover:text-orange-400 transition-colors cursor-pointer" strokeWidth={1.5} />
+            <a 
+              href="https://www.instagram.com/itskeekoh" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-orange-400 transition-colors"
+            >
+              <Instagram className="w-5 h-5" />
+            </a>
+            <a 
+              href="https://www.youtube.com/@ItsKeekoh" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-orange-400 transition-colors"
+            >
+              <Youtube className="w-7 h-7" strokeWidth={1.5} />
+            </a>
           </div>
         </footer>
       </div>
