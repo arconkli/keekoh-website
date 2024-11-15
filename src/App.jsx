@@ -61,7 +61,7 @@ const KeeKohWebsite = () => {
   const platforms = [
     { name: "SPOTIFY", url: "#" },
     { name: "APPLE MUSIC", url: "#" },
-    { name: "TIDAL", url: "#" }
+    { name: "AMAZON MUSIC", url: "#" }
   ];
 
   const titleStyle = {
