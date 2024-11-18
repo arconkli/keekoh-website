@@ -1,0 +1,27 @@
+name: Update package-lock.json
+
+on:
+  workflow_dispatch:  # This allows manual triggering
+
+jobs:
+  update-lockfile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.18.0'
+          
+      - name: Install dependencies
+        run: npm install
+        
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          commit-message: Update package-lock.json
+          title: Update package-lock.json
+          body: Update package-lock.json to sync with package.json
+          branch: update-lockfile
+          delete-branch: true
