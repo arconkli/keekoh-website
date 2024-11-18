@@ -59,9 +59,9 @@ const KeeKohWebsite = () => {
   ];
 
   const platforms = [
-    { name: "SPOTIFY", url: "#" },
-    { name: "APPLE MUSIC", url: "#" },
-    { name: "AMAZON MUSIC", url: "#" }
+    { name: "SPOTIFY", url: "https://open.spotify.com/artist/0puO6eqLF0zCd8g4nXIxnQ?si=62y6DC83TWywxMdWzBiMFg" },
+    { name: "APPLE MUSIC", url: "https://music.apple.com/us/artist/keekoh/1779982100" },
+    { name: "YOUTUBE", url: "https://www.youtube.com/@ItsKeekoh" }
   ];
 
   const titleStyle = {
