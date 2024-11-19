@@ -1,35 +1,98 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Music, Video, Download } from 'lucide-react';
 import coverImage from './assets/It_All_Falls_Cover_Web.jpeg';
 
 // Import all platform logos
-import spotifyLogo from './assets/spotify.png';
-import appleMusicLogo from './assets/apple-music.png';
-import amazonMusicLogo from './assets/amazon-music.png';
-import youtubeMusicLogo from './assets/youtube-music.png';
-import youtubeLogo from './assets/youtube.png';
-import tidalLogo from './assets/tidal.png';
-import soundcloudLogo from './assets/soundcloud.png';
-import audiomackLogo from './assets/audiomack.png';
+import spotifyLogo from './assets/platforms/spotify.png';
+import appleMusicLogo from './assets/platforms/apple-music.png';
+import amazonMusicLogo from './assets/platforms/amazon-music.png';
+import youtubeMusicLogo from './assets/platforms/youtube-music.png';
+import youtubeLogo from './assets/platforms/youtube.png';
+import tidalLogo from './assets/platforms/tidal.png';
+import soundcloudLogo from './assets/platforms/soundcloud.png';
+import audiomackLogo from './assets/platforms/audiomack.png';
 
-const ICON_SIZE = 24; // Define standard icon size
+const ICON_SIZE = 24;
 
-// Logo component with size handling
-const PlatformLogo = ({ src, alt, className }) => {
+// Platform link component with preloading
+const PlatformLink = ({ platform }) => {
+  const [isHovering, setIsHovering] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovering(true);
+    // Create a link prefetch element
+    const linkPrefetch = document.createElement('link');
+    linkPrefetch.rel = 'prefetch';
+    linkPrefetch.href = platform.url;
+    document.head.appendChild(linkPrefetch);
+    
+    // Create a DNS prefetch element
+    const dnsPrefetch = document.createElement('link');
+    dnsPrefetch.rel = 'dns-prefetch';
+    dnsPrefetch.href = new URL(platform.url).origin;
+    document.head.appendChild(dnsPrefetch);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+  };
+
   return (
-    <div 
-      className={`relative flex items-center justify-center w-6 h-6 ${className}`}
-      style={{ minWidth: ICON_SIZE, minHeight: ICON_SIZE }}
+    <a
+      href={platform.url}
+      className="relative block w-full group"
+      target="_blank"
+      rel="noopener noreferrer"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
-      <img 
-        src={src} 
-        alt={alt}
-        width={ICON_SIZE}
-        height={ICON_SIZE}
-        className="w-full h-full object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-300"
-      />
-    </div>
+      <div className="relative overflow-hidden rounded bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-all duration-300">
+        <div className={`absolute inset-0 bg-gradient-to-r ${platform.color} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+        <div className="relative flex items-center justify-between p-4">
+          <div className="flex items-center gap-3">
+            <div 
+              className="relative flex items-center justify-center w-6 h-6"
+              style={{ minWidth: ICON_SIZE, minHeight: ICON_SIZE }}
+            >
+              <img 
+                src={platform.icon} 
+                alt={`${platform.name} icon`}
+                width={ICON_SIZE}
+                height={ICON_SIZE}
+                className="w-full h-full object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+              />
+            </div>
+            <span className="font-medium" style={titleStyle}>{platform.name}</span>
+          </div>
+          <span className="text-sm text-white/70 px-3 py-1 rounded border border-white/20 group-hover:border-white/40 transition-colors duration-300">
+            {platform.action}
+            {isHovering && (
+              <div className="absolute inset-0 pointer-events-none opacity-0">
+                <iframe 
+                  src={platform.url} 
+                  style={{ width: '1px', height: '1px' }} 
+                  tabIndex="-1"
+                  aria-hidden="true"
+                />
+              </div>
+            )}
+          </span>
+        </div>
+      </div>
+    </a>
   );
+};
+
+const titleStyle = {
+  fontFamily: "aktiv-grotesk, sans-serif",
+  fontWeight: 700,
+  fontStyle: "normal",
+};
+
+const keekohStyle = {
+  fontFamily: "neulis-cursive, sans-serif",
+  fontWeight: 500,
+  fontStyle: "normal",
 };
 
 const MusicLinksPage = () => {
@@ -92,30 +155,15 @@ const MusicLinksPage = () => {
     }
   ];
 
-  const keekohStyle = {
-    fontFamily: "neulis-cursive, sans-serif",
-    fontWeight: 500,
-    fontStyle: "normal",
-  };
-
-  const titleStyle = {
-    fontFamily: "aktiv-grotesk, sans-serif",
-    fontWeight: 700,
-    fontStyle: "normal",
-  };
-
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Background sections remain the same */}
       <div className="fixed inset-0 z-0">
         <img 
           src={coverImage}
           alt="Background" 
           className="w-full h-full object-cover opacity-30"
         />
-        
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/40" />
-        
         <div className="absolute inset-0 overflow-hidden">
           <div
             className="absolute w-full h-full blur-[100px] opacity-20"
@@ -169,29 +217,7 @@ const MusicLinksPage = () => {
         {/* Platform Links */}
         <div className="w-full space-y-3">
           {platforms.map((platform) => (
-            <a
-              key={platform.name}
-              href={platform.url}
-              className="relative block w-full group"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div className="relative overflow-hidden rounded bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-all duration-300">
-                <div className={`absolute inset-0 bg-gradient-to-r ${platform.color} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
-                <div className="relative flex items-center justify-between p-4">
-                  <div className="flex items-center gap-3">
-                    <PlatformLogo 
-                      src={platform.icon} 
-                      alt={`${platform.name} icon`}
-                    />
-                    <span className="font-medium" style={titleStyle}>{platform.name}</span>
-                  </div>
-                  <span className="text-sm text-white/70 px-3 py-1 rounded border border-white/20 group-hover:border-white/40 transition-colors duration-300">
-                    {platform.action}
-                  </span>
-                </div>
-              </div>
-            </a>
+            <PlatformLink key={platform.name} platform={platform} />
           ))}
         </div>
 
