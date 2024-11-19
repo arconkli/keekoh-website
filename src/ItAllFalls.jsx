@@ -6,28 +6,28 @@ const MusicLinksPage = () => {
   const platforms = [
     { 
       name: 'Spotify', 
-      url: '#', 
+      url: 'https://open.spotify.com/track/5Zs5e9QcngOP7rFHOF23iY?si=5e8cce8fc48d4e10', 
       action: 'Play',
       icon: '/api/placeholder/24/24',
       color: 'from-green-500/20'
     },
     { 
       name: 'Apple Music', 
-      url: '#', 
+      url: 'https://music.apple.com/us/album/it-all-falls/1779658675?i=1779658676', 
       action: 'Play',
       icon: '/api/placeholder/24/24',
       color: 'from-red-500/20'
     },
     { 
       name: 'Amazon Music', 
-      url: '#', 
+      url: 'https://music.amazon.com/albums/B0DMY4NYSL?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_ojs5hP0lnuv6uFlZB2nmS9RFs&trackAsin=B0DMXLKBJZ', 
       action: 'Play',
       icon: '/api/placeholder/24/24',
       color: 'from-blue-500/20'
     },
     { 
       name: 'YouTube Music', 
-      url: '#', 
+      url: 'https://music.youtube.com/watch?v=cQfTs2n0zJA&feature=shared', 
       action: 'Play',
       icon: '/api/placeholder/24/24',
       color: 'from-red-600/20'
@@ -35,34 +35,27 @@ const MusicLinksPage = () => {
     { 
       name: 'YouTube', 
       url: '#', 
-      action: 'Official Music Video',
+      action: 'Official Vizualizer',
       icon: '/api/placeholder/24/24',
       color: 'from-red-500/20'
     },
     { 
-      name: 'iTunes Store', 
-      url: '#', 
-      action: 'Download',
-      icon: '/api/placeholder/24/24',
-      color: 'from-purple-500/20'
-    },
-    { 
       name: 'TIDAL', 
-      url: '#', 
+      url: 'https://tidal.com/browse/track/399382160?u', 
       action: 'Play',
       icon: '/api/placeholder/24/24',
       color: 'from-blue-400/20'
     },
     { 
       name: 'SoundCloud', 
-      url: '#', 
+      url: 'https://soundcloud.com/itskeekoh/it-all-falls?si=d797e6d2af324edc8db38813bc899e1e&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing', 
       action: 'Play',
       icon: '/api/placeholder/24/24',
       color: 'from-orange-500/20'
     },
     { 
       name: 'Audiomack', 
-      url: '#', 
+      url: 'https://audiomack.com/keekoh-2/song/it-all-falls', 
       action: 'Play',
       icon: '/api/placeholder/24/24',
       color: 'from-yellow-500/20'
