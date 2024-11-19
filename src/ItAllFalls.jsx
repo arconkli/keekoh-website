@@ -2,62 +2,92 @@ import React from 'react';
 import { Music, Video, Download } from 'lucide-react';
 import coverImage from './assets/It_All_Falls_Cover_Web.jpeg';
 
+// Import all platform logos
+import spotifyLogo from './assets/spotify.png';
+import appleMusicLogo from './assets/apple-music.png';
+import amazonMusicLogo from './assets/amazon-music.png';
+import youtubeMusicLogo from './assets/youtube-music.png';
+import youtubeLogo from './assets/youtube.png';
+import tidalLogo from './assets/tidal.png';
+import soundcloudLogo from './assets/soundcloud.png';
+import audiomackLogo from './assets/audiomack.png';
+
+const ICON_SIZE = 24; // Define standard icon size
+
+// Logo component with size handling
+const PlatformLogo = ({ src, alt, className }) => {
+  return (
+    <div 
+      className={`relative flex items-center justify-center w-6 h-6 ${className}`}
+      style={{ minWidth: ICON_SIZE, minHeight: ICON_SIZE }}
+    >
+      <img 
+        src={src} 
+        alt={alt}
+        width={ICON_SIZE}
+        height={ICON_SIZE}
+        className="w-full h-full object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+      />
+    </div>
+  );
+};
+
 const MusicLinksPage = () => {
   const platforms = [
     { 
       name: 'Spotify', 
       url: 'https://open.spotify.com/track/5Zs5e9QcngOP7rFHOF23iY?si=5e8cce8fc48d4e10', 
       action: 'Play',
-      icon: '/api/placeholder/24/24',
+      icon: spotifyLogo,
       color: 'from-green-500/20'
     },
     { 
       name: 'Apple Music', 
       url: 'https://music.apple.com/us/album/it-all-falls/1779658675?i=1779658676', 
       action: 'Play',
-      icon: '/api/placeholder/24/24',
+      icon: appleMusicLogo,
       color: 'from-red-500/20'
     },
     { 
       name: 'Amazon Music', 
       url: 'https://music.amazon.com/albums/B0DMY4NYSL?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_ojs5hP0lnuv6uFlZB2nmS9RFs&trackAsin=B0DMXLKBJZ', 
       action: 'Play',
-      icon: '/api/placeholder/24/24',
+      icon: amazonMusicLogo,
       color: 'from-blue-500/20'
     },
     { 
       name: 'YouTube Music', 
       url: 'https://music.youtube.com/watch?v=cQfTs2n0zJA&feature=shared', 
       action: 'Play',
-      icon: '/api/placeholder/24/24',
+      icon: youtubeMusicLogo,
       color: 'from-red-600/20'
     },
     { 
       name: 'YouTube', 
       url: '#', 
       action: 'Official Vizualizer',
-      icon: '/api/placeholder/24/24',
+      icon: youtubeLogo,
       color: 'from-red-500/20'
     },
     { 
       name: 'TIDAL', 
       url: 'https://tidal.com/browse/track/399382160?u', 
       action: 'Play',
-      icon: '/api/placeholder/24/24',
+      icon: tidalLogo,
       color: 'from-blue-400/20'
     },
     { 
       name: 'SoundCloud', 
       url: 'https://soundcloud.com/itskeekoh/it-all-falls?si=d797e6d2af324edc8db38813bc899e1e&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing', 
       action: 'Play',
-      icon: '/api/placeholder/24/24',
+      icon: soundcloudLogo,
       color: 'from-orange-500/20'
     },
     { 
       name: 'Audiomack', 
       url: 'https://audiomack.com/keekoh-2/song/it-all-falls', 
       action: 'Play',
-      icon: '/api/placeholder/24/24',
+      icon: audiomackLogo,
       color: 'from-yellow-500/20'
     }
   ];
@@ -97,7 +127,7 @@ const MusicLinksPage = () => {
       </div>
 
       <div className="relative z-10 min-h-screen flex flex-col items-center px-4 pt-8 pb-12 max-w-2xl mx-auto">
-        {/* Updated Song Title with glow effect */}
+        {/* Song Title */}
         <div className="relative mb-4 text-center">
           <h1 className="relative text-2xl md:text-4xl tracking-[0.2em]" style={titleStyle}>
             <span className="relative block">
@@ -150,13 +180,10 @@ const MusicLinksPage = () => {
                 <div className={`absolute inset-0 bg-gradient-to-r ${platform.color} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
                 <div className="relative flex items-center justify-between p-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-6 h-6 relative flex items-center justify-center">
-                      <img 
-                        src={platform.icon} 
-                        alt={`${platform.name} icon`} 
-                        className="w-6 h-6 opacity-90 group-hover:opacity-100 transition-opacity duration-300"
-                      />
-                    </div>
+                    <PlatformLogo 
+                      src={platform.icon} 
+                      alt={`${platform.name} icon`}
+                    />
                     <span className="font-medium" style={titleStyle}>{platform.name}</span>
                   </div>
                   <span className="text-sm text-white/70 px-3 py-1 rounded border border-white/20 group-hover:border-white/40 transition-colors duration-300">
