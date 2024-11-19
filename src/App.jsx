@@ -1,7 +1,8 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import KeeKohWebsite from "./KeekohWebsite.jsx"; 
-import MusicLinksPage from "./MusicLinksPage.jsx"; 
+// Add the .jsx extension here
+import MusicLinksPage from "./MusicLinksPage.jsx";  
 import ItAllFalls from "./ItAllFalls.jsx"; 
 
 const App = () => {
