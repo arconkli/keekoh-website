@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import KeeKohWebsite from "./KeeKohWebsite";
-import ItAllFalls from "./ItAllFalls";
+import KeeKohWebsite from "./KeeKohWebsite.jsx";
+import ItAllFalls from "./ItAllFalls.jsx";
 
 const App = () => {
   return (
