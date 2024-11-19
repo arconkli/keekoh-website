@@ -8,20 +8,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
+        with:
+          fetch-depth: 0  # Fetch all history (important for lock file updates)
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18.18.0'
-          
+          cache: 'npm' # Cache dependencies to speed up the workflow
+
       - name: Install dependencies
         run: npm install
-        
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v5
+
+      - name: Configure Git
+        run: |
+          git config --global user.name 'arconkli' 
+          git config --global user.email 'arconkli@gmail.com'
+
+      - name: Commit changes
+        run: |
+          git add package-lock.json
+          git commit -m "Update package-lock.json"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
         with:
-          commit-message: Update package-lock.json
-          title: Update package-lock.json
-          body: Update package-lock.json to sync with package.json
-          branch: update-lockfile
-          delete-branch: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
