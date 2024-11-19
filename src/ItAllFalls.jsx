@@ -76,9 +76,11 @@ const MusicLinksPage = () => {
     fontStyle: "normal",
   };
 
+  
+
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Background image with overlay */}
+      {/* Background sections remain the same */}
       <div className="fixed inset-0 z-0">
         <img 
           src={coverImage}
@@ -98,44 +100,25 @@ const MusicLinksPage = () => {
         </div>
       </div>
 
-      {/* Content */}
       <div className="relative z-10 min-h-screen flex flex-col items-center px-4 pt-8 pb-12 max-w-2xl mx-auto">
-        {/* Enhanced Song Title with new styling */}
-        <div className="relative mb-4">
+        {/* Refined Song Title */}
+        <div className="relative mb-4 text-center">
           <h1 
-            className="text-2xl md:text-4xl font-bold tracking-[0.2em] text-center perspective-[1000px]" 
+            className="text-2xl md:text-4xl tracking-[0.2em] text-transparent bg-clip-text font-bold"
             style={{
               ...titleStyle,
-              textShadow: `
-                0 0 1px rgba(255,255,255,0.7),
-                0 0 2px rgba(255,140,50,0.5),
-                0 0 4px rgba(255,140,50,0.3),
-                0 0 8px rgba(255,140,50,0.2)
-              `,
-              background: 'linear-gradient(180deg, #fff, #ffa352)',
+              background: 'linear-gradient(to bottom, #ffffff 30%, #ffa352)',
               WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              animation: 'titlePulse 3s ease-in-out infinite'
+              textShadow: '0 2px 15px rgba(255, 163, 82, 0.2)'
             }}
           >
-            <style>
-              {`
-                @keyframes titlePulse {
-                  0%, 100% { transform: translateY(0px) rotateX(0deg); }
-                  50% { transform: translateY(-2px) rotateX(2deg); }
-                }
-              `}
-            </style>
-            <span className="relative inline-block">
-              IT ALL FALLS
-              <span className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-white/20 to-transparent opacity-50 mix-blend-overlay" />
-            </span>
+            IT ALL FALLS
           </h1>
-          {/* Enhanced divider */}
-          <div className="mt-3 mx-auto w-32 h-[2px] bg-gradient-to-r from-transparent via-orange-500 to-transparent opacity-70" 
-               style={{
-                 boxShadow: '0 0 10px rgba(255,140,50,0.5)',
-               }}
+          <div 
+            className="mt-3 mx-auto h-px w-24 bg-gradient-to-r from-transparent via-orange-500/50 to-transparent"
+            style={{
+              boxShadow: '0 0 8px rgba(255, 163, 82, 0.3)'
+            }}
           />
         </div>
 
