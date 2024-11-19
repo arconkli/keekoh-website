@@ -1,6 +1,7 @@
 import React from 'react';
-import { Music, Video, Download } from 'lucide-react';
 import coverImage from './assets/It_All_Falls_Cover_Web.jpeg';
+// Import platform logos (you'll need to add these files)
+
 
 const MusicLinksPage = () => {
   const platforms = [
@@ -8,60 +9,61 @@ const MusicLinksPage = () => {
       name: 'Spotify', 
       url: 'https://open.spotify.com/track/5Zs5e9QcngOP7rFHOF23iY?si=5e8cce8fc48d4e10', 
       action: 'Play',
-      icon: '/api/placeholder/24/24',
+      icon: spotifyLogo,
       color: 'from-green-500/20'
     },
     { 
       name: 'Apple Music', 
       url: 'https://music.apple.com/us/album/it-all-falls/1779658675?i=1779658676', 
       action: 'Play',
-      icon: '/api/placeholder/24/24',
+      icon: appleMusicLogo,
       color: 'from-red-500/20'
     },
     { 
       name: 'Amazon Music', 
       url: 'https://music.amazon.com/albums/B0DMY4NYSL?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_ojs5hP0lnuv6uFlZB2nmS9RFs&trackAsin=B0DMXLKBJZ', 
       action: 'Play',
-      icon: '/api/placeholder/24/24',
+      icon: amazonMusicLogo,
       color: 'from-blue-500/20'
     },
     { 
       name: 'YouTube Music', 
       url: 'https://music.youtube.com/watch?v=cQfTs2n0zJA&feature=shared', 
       action: 'Play',
-      icon: '/api/placeholder/24/24',
+      icon: youtubeMusicLogo,
       color: 'from-red-600/20'
     },
     { 
       name: 'YouTube', 
       url: '#', 
       action: 'Official Vizualizer',
-      icon: '/api/placeholder/24/24',
+      icon: youtubeLogo,
       color: 'from-red-500/20'
     },
     { 
       name: 'TIDAL', 
       url: 'https://tidal.com/browse/track/399382160?u', 
       action: 'Play',
-      icon: '/api/placeholder/24/24',
+      icon: tidalLogo,
       color: 'from-blue-400/20'
     },
     { 
       name: 'SoundCloud', 
       url: 'https://soundcloud.com/itskeekoh/it-all-falls?si=d797e6d2af324edc8db38813bc899e1e&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing', 
       action: 'Play',
-      icon: '/api/placeholder/24/24',
+      icon: soundcloudLogo,
       color: 'from-orange-500/20'
     },
     { 
       name: 'Audiomack', 
       url: 'https://audiomack.com/keekoh-2/song/it-all-falls', 
       action: 'Play',
-      icon: '/api/placeholder/24/24',
+      icon: audiomackLogo,
       color: 'from-yellow-500/20'
     }
   ];
 
+  // Styles configuration
   const keekohStyle = {
     fontFamily: "neulis-cursive, sans-serif",
     fontWeight: 500,
@@ -74,8 +76,28 @@ const MusicLinksPage = () => {
     fontStyle: "normal",
   };
 
+  // Animation keyframes
+  const keyframes = `
+    @keyframes titlePulse {
+      0%, 100% { transform: translateY(0px) rotateX(0deg); }
+      50% { transform: translateY(-2px) rotateX(2deg); }
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes glow {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 1; }
+    }
+  `;
+
   return (
     <div className="min-h-screen bg-black text-white">
+      <style>{keyframes}</style>
+      
       {/* Background image with overlay */}
       <div className="fixed inset-0 z-0">
         <img 
@@ -96,20 +118,39 @@ const MusicLinksPage = () => {
         </div>
       </div>
 
-      {/* Content */}
+      {/* Main Content */}
       <div className="relative z-10 min-h-screen flex flex-col items-center px-4 pt-8 pb-12 max-w-2xl mx-auto">
-        {/* Enhanced Song Title */}
+        {/* Title Section */}
         <div className="relative mb-4">
           <h1 
-            className="text-2xl md:text-3xl font-light tracking-[0.3em] text-center" 
-            style={titleStyle}
+            className="text-2xl md:text-4xl font-bold tracking-[0.2em] text-center perspective-[1000px]" 
+            style={{
+              ...titleStyle,
+              textShadow: `
+                0 0 1px rgba(255,255,255,0.7),
+                0 0 2px rgba(255,140,50,0.5),
+                0 0 4px rgba(255,140,50,0.3),
+                0 0 8px rgba(255,140,50,0.2)
+              `,
+              background: 'linear-gradient(180deg, #fff, #ffa352)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              animation: 'titlePulse 3s ease-in-out infinite'
+            }}
           >
-            <span className="relative">
-              <span className="relative z-10">IT ALL FALLS</span>
-              <span className="absolute inset-0 blur-[1px] opacity-70 text-orange-500/50">IT ALL FALLS</span>
+            <span className="relative inline-block">
+              IT ALL FALLS
+              <span className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-white/20 to-transparent opacity-50 mix-blend-overlay" />
             </span>
           </h1>
-          <div className="mt-2 w-16 h-[1px] mx-auto bg-gradient-to-r from-transparent via-orange-500/50 to-transparent" />
+          
+          {/* Divider */}
+          <div 
+            className="mt-3 mx-auto w-32 h-[2px] bg-gradient-to-r from-transparent via-orange-500 to-transparent opacity-70"
+            style={{
+              boxShadow: '0 0 10px rgba(255,140,50,0.5)',
+            }}
+          />
         </div>
 
         {/* Artist Name */}
@@ -135,11 +176,14 @@ const MusicLinksPage = () => {
 
         {/* Platform Links */}
         <div className="w-full space-y-3">
-          {platforms.map((platform) => (
+          {platforms.map((platform, index) => (
             <a
               key={platform.name}
               href={platform.url}
               className="relative block w-full group"
+              style={{
+                animation: `fadeIn 0.5s ease-out ${index * 0.1}s both`
+              }}
             >
               <div className="relative overflow-hidden rounded bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-all duration-300">
                 <div className={`absolute inset-0 bg-gradient-to-r ${platform.color} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
