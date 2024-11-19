@@ -97,9 +97,9 @@ const MusicLinksPage = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 min-h-screen flex flex-col items-center px-4 py-12 max-w-2xl mx-auto">
+      <div className="relative z-10 min-h-screen flex flex-col items-center px-4 pt-8 pb-12 max-w-2xl mx-auto">
         {/* Enhanced Song Title */}
-        <div className="relative mb-8">
+        <div className="relative mb-4">
           <h1 
             className="text-2xl md:text-3xl font-light tracking-[0.3em] text-center" 
             style={titleStyle}
@@ -113,7 +113,7 @@ const MusicLinksPage = () => {
         </div>
 
         {/* Artist Name */}
-        <h2 className="relative text-5xl md:text-7xl mb-12" style={keekohStyle}>
+        <h2 className="relative text-5xl md:text-7xl mb-8" style={keekohStyle}>
           <span className="relative block">
             <span className="relative z-10">KEEKOH</span>
             <span className="absolute inset-0 blur-[2px] opacity-80">KEEKOH</span>
@@ -123,7 +123,7 @@ const MusicLinksPage = () => {
         </h2>
 
         {/* Cover Art */}
-        <div className="w-64 h-64 mb-12 relative group">
+        <div className="w-64 h-64 mb-8 relative group">
           <img
             src={coverImage}
             alt="Album Cover"
