@@ -85,7 +85,7 @@ const MusicLinksPage = () => {
       {/* Background image with overlay */}
       <div className="fixed inset-0 z-0">
         <img 
-          src="/assets/It_All_Falls_Cover_Web.JPEG" 
+          src="./assets/It_All_Falls_Cover_Web.JPEG" 
           alt="Background" 
           className="w-full h-full object-cover opacity-30"
         />
@@ -131,7 +131,7 @@ const MusicLinksPage = () => {
         {/* Cover Art */}
         <div className="w-64 h-64 mb-12 relative group">
           <img
-            src="/assets/It_All_Falls_Cover_Web.JPEG"
+            src="./assets/It_All_Falls_Cover_Web.JPEG"
             alt="Album Cover"
             className="w-full h-full object-cover rounded-lg shadow-xl"
           />
