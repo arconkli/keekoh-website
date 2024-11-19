@@ -85,7 +85,7 @@ const MusicLinksPage = () => {
       {/* Background image with overlay */}
       <div className="fixed inset-0 z-0">
         <img 
-          src="/path-to-your-spiral-staircase-image.jpg" 
+          src="/assets/It_All_Falls_Cover_Web.JPEG" 
           alt="Background" 
           className="w-full h-full object-cover opacity-30"
         />
