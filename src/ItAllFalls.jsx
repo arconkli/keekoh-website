@@ -3,14 +3,14 @@ import { Music, Video, Download } from 'lucide-react';
 import coverImage from './assets/It_All_Falls_Cover_Web.jpeg';
 
 // Import all platform logos
-import spotifyLogo from './assets/platforms/spotify.png';
-import appleMusicLogo from './assets/platforms/apple-music.png';
-import amazonMusicLogo from './assets/platforms/amazon-music.png';
-import youtubeMusicLogo from './assets/platforms/youtube-music.png';
-import youtubeLogo from './assets/platforms/youtube.png';
-import tidalLogo from './assets/platforms/tidal.png';
-import soundcloudLogo from './assets/platforms/soundcloud.png';
-import audiomackLogo from './assets/platforms/audiomack.png';
+import spotifyLogo from './assets/spotify.png';
+import appleMusicLogo from './assets/apple-music.png';
+import amazonMusicLogo from './assets/amazon-music.png';
+import youtubeMusicLogo from './assets/youtube-music.png';
+import youtubeLogo from './assets/youtube.png';
+import tidalLogo from './assets/tidal.png';
+import soundcloudLogo from './assets/soundcloud.png';
+import audiomackLogo from './assets/audiomack.png';
 
 const ICON_SIZE = 24;
 
