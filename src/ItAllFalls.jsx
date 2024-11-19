@@ -1,5 +1,3 @@
-// MusicLinksPage.jsx
-
 import React from 'react';
 import { Music, Video, Download } from 'lucide-react';
 import coverImage from './assets/It_All_Falls_Cover_Web.jpeg';
@@ -76,8 +74,6 @@ const MusicLinksPage = () => {
     fontStyle: "normal",
   };
 
-  
-
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Background sections remain the same */}
@@ -101,18 +97,15 @@ const MusicLinksPage = () => {
       </div>
 
       <div className="relative z-10 min-h-screen flex flex-col items-center px-4 pt-8 pb-12 max-w-2xl mx-auto">
-        {/* Refined Song Title */}
+        {/* Updated Song Title with glow effect */}
         <div className="relative mb-4 text-center">
-          <h1 
-            className="text-2xl md:text-4xl tracking-[0.2em] text-transparent bg-clip-text font-bold"
-            style={{
-              ...titleStyle,
-              background: 'linear-gradient(to bottom, #ffffff 30%, #ffa352)',
-              WebkitBackgroundClip: 'text',
-              textShadow: '0 2px 15px rgba(255, 163, 82, 0.2)'
-            }}
-          >
-            IT ALL FALLS
+          <h1 className="relative text-2xl md:text-4xl tracking-[0.2em]" style={titleStyle}>
+            <span className="relative block">
+              <span className="relative z-10 text-white">IT ALL FALLS</span>
+              <span className="absolute inset-0 blur-[1px] opacity-70 text-white">IT ALL FALLS</span>
+              <span className="absolute inset-0 blur-[2px] opacity-50 text-white">IT ALL FALLS</span>
+              <span className="absolute inset-0 blur-[3px] opacity-30 text-white">IT ALL FALLS</span>
+            </span>
           </h1>
           <div 
             className="mt-3 mx-auto h-px w-24 bg-gradient-to-r from-transparent via-orange-500/50 to-transparent"
