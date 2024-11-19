@@ -1,6 +1,6 @@
 import React from 'react';
 import { Music, Video, Download } from 'lucide-react';
-import coverImage from './assets/It_All_Falls_Cover_Web.JPEG';
+import coverImage from './assets/It_All_Falls_Cover_Web.jpeg';
 
 const MusicLinksPage = () => {
   const platforms = [
