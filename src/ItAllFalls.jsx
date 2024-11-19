@@ -131,7 +131,7 @@ const MusicLinksPage = () => {
         {/* Cover Art */}
         <div className="w-64 h-64 mb-12 relative group">
           <img
-            src="/path-to-your-spiral-staircase-image.jpg"
+            src="/assets/It_All_Falls_Cover_Web.JPEG"
             alt="Album Cover"
             className="w-full h-full object-cover rounded-lg shadow-xl"
           />
