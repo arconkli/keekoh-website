@@ -77,7 +77,18 @@ const KeeKohWebsite = () => {
   };
 
   // Create enough items for one complete set
-  const tickerItems = Array(10).fill(releases).flat();
+  const tickerItems = Array(10).fill(releases).flat().map((release, index) => (
+    <a
+      key={index}
+      href="https://keekoh.com/ItAllFalls"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-block mx-6 text-xs md:text-sm font-light tracking-widest text-white/70 hover:text-orange-300 transition-colors"
+      style={titleStyle}
+    >
+      {release}
+    </a>
+  ));
 
   return (
     <div 
@@ -164,15 +175,7 @@ const KeeKohWebsite = () => {
         <div className="w-full overflow-hidden border-t border-b border-white/10 py-3 z-10 backdrop-blur-sm bg-black/30" ref={tickerRef}>
           <div className="ticker-wrapper inline-flex">
             <div className="ticker-content inline-flex whitespace-nowrap">
-              {tickerItems.map((release, index) => (
-                <span
-                  key={index}
-                  className="inline-block mx-6 text-xs md:text-sm font-light tracking-widest text-white/70"
-                  style={titleStyle}
-                >
-                  {release}
-                </span>
-              ))}
+              {tickerItems}
             </div>
           </div>
         </div>
