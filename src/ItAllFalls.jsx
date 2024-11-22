@@ -127,7 +127,7 @@ const MusicLinksPage = () => {
     },
     { 
       name: 'YouTube', 
-      url: '#', 
+      url: 'https://www.youtube.com/@ItsKeekoh', 
       action: 'Official Vizualizer',
       icon: youtubeLogo,
       color: 'from-red-500/20'
