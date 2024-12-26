@@ -127,7 +127,7 @@ const MusicLinksPage = () => {
     },
     { 
       name: 'YouTube', 
-      url: 'https://youtu.be/If92Y9oTHVE?feature=shared', 
+      url: 'https://youtu.be/uJdljPL0CHI?si=xoIWlRfJyKOaMaTO', 
       action: 'Official Vizualizer',
       icon: youtubeLogo,
       color: 'from-red-500/20'
